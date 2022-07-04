@@ -5,19 +5,13 @@ int main() {
 	cin >> a >> b >> c;
 	int res = a * b * c;
 	int v[10] = { 0 };
-	int t;
-	for (int i = 100000; i < 1000000000; i*=10) {
-		if (res / i > 0 && res / i < 10) {
-			t = i;
-		}
+	//일의 자리부터 숫자 탐색-> 10으로 나눈 나머지
+	//다음 자리 숫자 탐색-> 10으로 나누어 같은 과정 반복
+	while (res > 0) {
+		v[res % 10]++;
+		res /= 10;
 	}
 	
-	for (int i = 0; i < 10; i++) {
-		v[res / t] += 1;
-		res %= t;
-		t /= 10;
-		if (t == 0) break;
-	}
 	for (int i = 0; i < 10; i++) {
 		cout << v[i] << endl;
 	}
