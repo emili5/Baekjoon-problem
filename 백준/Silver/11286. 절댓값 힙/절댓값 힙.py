@@ -1,0 +1,17 @@
+import sys
+import heapq
+input=sys.stdin.readline
+n=int(input())
+
+h=heapq
+arr=[]
+for _ in range(n):
+    num=int(input())
+    if num==0:
+        if len(arr)==0:
+            print(0)
+        else:
+            top=h.heappop(arr)
+            print(top[1])
+    else:
+        h.heappush(arr,(abs(num),num))
